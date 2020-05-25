@@ -9,6 +9,9 @@ public class Palavra {
     public String getPalavra(){
         return palavra;
     }
-
+    
+    public LinkedListOfInteger getListaPaginas(){
+        return listapaginas;
+    }
     
 }

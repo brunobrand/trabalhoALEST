@@ -34,8 +34,10 @@ public class App {
                 System.out.println(linhas[n]);
             }
         }
+        LinkedListPalavra linkedListPalavra = new LinkedListPalavra();
+        String[] palavrasLinha = new String[20];
         int aux = 0;
-        while(aux>numPaginas){
+        while(aux<numPaginas){
         for (int i = 1; i <=40; i++) {
             System.out.println("\nPalavras da linha " + i + ": ");
             linhas[i-1] = linhas[i-1].replaceAll("\\t"," "); // substitui tab por espaco em branco
@@ -46,13 +48,26 @@ public class App {
                 s = s.toLowerCase();
                 System.out.println("->" + s);  
             }
-         
+            palavrasLinha = tokens;
+            for(int j = 0; j < palavrasLinha.length; j++){
+                System.out.println(palavrasLinha[j]);
+            }
+
+            for(int k = 0; k<palavrasLinha.length; k++){
+                Palavra umaPalavra = new Palavra(palavrasLinha[k]);
+                if(linkedListPalavra.contains(umaPalavra)){
+                   break;
+                }
+                else linkedListPalavra.add(umaPalavra);
+            }
+
                                                // AQUI ACHO QUE TEMOS QUE ADICIONAR O "s" na LinkedListPalavra
                                                // se ainda não existir uma palavra igual. Se existir uma palavra
                                                // igual, temos que pegar o número da página e adicionar na LinkedListOfInteger
                                                // dessa palavra.
 
-         }
-         }
+        }
+        }
+
     }
 }
