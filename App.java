@@ -34,19 +34,25 @@ public class App {
                 System.out.println(linhas[n]);
             }
         }
-
-        for (int i = 1; i <= 10; i++) {
+        int aux = 0;
+        while(aux>numPaginas){
+        for (int i = 1; i <=40; i++) {
             System.out.println("\nPalavras da linha " + i + ": ");
             linhas[i-1] = linhas[i-1].replaceAll("\\t"," "); // substitui tab por espaco em branco
             linhas[i-1] = linhas[i-1].replaceAll(",",""); // para remover vírgulas
-            String[] tokens = linhas[i-1].split(" "); // divide a string pelo espaco em branco
+            linhas[i-1] = linhas[i-1].replaceAll("\\.",""); // remove ponto final
+            String[] tokens = linhas[i-1].split(" "); // divide a string pelo espaço em branco
             for (String s : tokens) {
                 s = s.toLowerCase();
-                System.out.println("->" + s);// AQUI ACHO QUE TEMOS QUE ADICIONAR O "s" na LinkedListPalavra
-                                            // se ainda não existir uma palavra igual. Se existir uma palavra
-                                            // igual, temos que pegar o número da página e adicionar na LinkedListOfInteger
-                                            // dessa palavra.
+                System.out.println("->" + s);  
             }
-        }
+         
+                                               // AQUI ACHO QUE TEMOS QUE ADICIONAR O "s" na LinkedListPalavra
+                                               // se ainda não existir uma palavra igual. Se existir uma palavra
+                                               // igual, temos que pegar o número da página e adicionar na LinkedListOfInteger
+                                               // dessa palavra.
+
+         }
+         }
     }
 }
