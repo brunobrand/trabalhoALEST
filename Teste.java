@@ -5,7 +5,7 @@ public class Teste {
     Palavra p1 = new Palavra("casa");
     lista.addEmOrdem(p1);
 
-
+    System.out.println("testando aqui");
     lista.mostra();
 
     }

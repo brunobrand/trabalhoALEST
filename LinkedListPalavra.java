@@ -155,20 +155,23 @@ public class LinkedListPalavra {
 
 
     public void addEmOrdem(Palavra novaPalavra){
-        Node novoNodo = new Node(novaPalavra);
-        if(count==0){tail = novoNodo;  // inserção se a lista estiver vazia
-                     head = novoNodo;}
-        else{ // inserção comparando com as outras palavras
-            Node aux = head;
-            for(int i =0; i<count; i++){ // percorrendo a lista e comparando as palavras, inserindo antes ou depois
-            if(aux.palavra.getPalavra().compareTo(novaPalavra.getPalavra()) == 1){
-                novoNodo.next = aux;
-            }
-            else aux.next = novoNodo;
-                aux = aux.next;
+        if(count==0) add(novaPalavra);
+        else if(novaPalavra.getPalavra().compareTo(get(0).getPalavra())<0){
+            add(0, novaPalavra);
+        }
+        else if (novaPalavra.getPalavra().compareTo(tail.palavra.getPalavra())>0){
+            add(novaPalavra);
+        }
+        else{
+            for(int i = 0; i<count; i++){
+                if(novaPalavra.getPalavra().compareTo(get(i).getPalavra())<0){
+                    add(novaPalavra);
+                    break;
+                }
             }
         }
     }
+        
 
     public void mostra(){
         String str = " ";
