@@ -9,6 +9,7 @@ public class LinkedListPalavra {
             next = null;
         }
 
+
         public Node(Palavra palavra, Node next) {
             this.palavra = palavra;
             this.next = next;
@@ -149,6 +150,33 @@ public class LinkedListPalavra {
             ant.next = n;
         }
         count++;
+    }
+    
+
+
+    public void addEmOrdem(Palavra novaPalavra){
+        Node novoNodo = new Node(novaPalavra);
+        if(count==0){tail = novoNodo;  // inserção se a lista estiver vazia
+                     head = novoNodo;}
+        else{ // inserção comparando com as outras palavras
+            Node aux = head;
+            for(int i =0; i<count; i++){ // percorrendo a lista e comparando as palavras, inserindo antes ou depois
+            if(aux.palavra.getPalavra().compareTo(novaPalavra.getPalavra()) == 1){
+                novoNodo.next = aux;
+            }
+            else aux.next = novoNodo;
+                aux = aux.next;
+            }
+        }
+    }
+
+    public void mostra(){
+        String str = " ";
+        for(int i =0; i<count; i++){
+            Node n = head;
+            str = str + n.palavra.getPalavra();
+        }
+        System.out.println(str);
     }
 
     /**
