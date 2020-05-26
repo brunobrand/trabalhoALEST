@@ -26,14 +26,6 @@ public class ManipulaStopWords{
             System.err.format("Erro na leitura do arquivo: ", e);
         }
 
-        int n = 0; // ISSO AQUI ACHO QUE NÃO PRECISA, PQ SÓ IMPRIME O LIVRO
-        for (int i = 1; i <= numPaginas; i++) {
-            System.out.println("--------------------- Pagina " + i + " ---------------------");
-            for (int j = 0; j < 40 && n < numLinhas; j++, n++) {
-                System.out.println(linhas[n]);
-            }
-        }
-
         int aux = 0;
         while(aux<numPaginas){
         for (int i = 1; i <=40; i++) {
