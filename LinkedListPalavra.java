@@ -164,7 +164,7 @@ public class LinkedListPalavra {
         }
         else{
             for(int i = 0; i<count; i++){
-                if(novaPalavra.getPalavra().compareTo(get(i).getPalavra())<0){
+                if(novaPalavra.getPalavra().compareTo(get(i).getPalavra())>0){
                     add(novaPalavra);
                     break;
                 }
