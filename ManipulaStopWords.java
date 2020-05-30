@@ -4,49 +4,21 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
-public class ManipulaStopWords{
-    public static void main(String[] args) {
-        String linhas[] = new String[1000];
-        int numLinhas = 0;
-        int numPaginas = 1;
-
-        Path path1 = Paths.get("stopwords.txt");// java.txt AQUI TEMOS QUE COLOCAR ALGUM DOS TEXTOS QUE ELA DEU
-
-        try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                linhas[numLinhas] = line;
-                numLinhas++;
-                if (numLinhas % 40 == 0) {
-                    numPaginas++;
-                }
+public class ManipulaStopWords {
+    public static void guardaStopWords(ListaStopwords ls){
+        Path path = Paths.get("stopwords.txt");
+        try (BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset())) {
+            String linha = null;
+            while ((linha = br.readLine()) != null) {
+                Scanner sc = new Scanner(linha);
+                String stopword = sc.next(); // pega a stopword
+                ls.add(stopword); //guarda a stopword na lista com arranjo
             }
-        } catch (IOException e) {
-            System.err.format("Erro na leitura do arquivo: ", e);
         }
-
-        int aux = 0;
-        while(aux<numPaginas){
-        for (int i = 1; i <=40; i++) {
-            System.out.println("\nPalavras da linha " + i + ": ");
-            linhas[i-1] = linhas[i-1].replaceAll("\\t"," "); // substitui tab por espaco em branco
-            linhas[i-1] = linhas[i-1].replaceAll(",",""); // para remover vírgulas
-            linhas[i-1] = linhas[i-1].replaceAll("\\.",""); // remove ponto final
-            String[] tokens = linhas[i-1].split(" "); // divide a string pelo espaço em branco
-            for (String s : tokens) {
-                s = s.toLowerCase();
-                System.out.println("->" + s);  
-            }
-
-
-                                               // AQUI ACHO QUE TEMOS QUE ADICIONAR O "s" na LinkedListPalavra
-                                               // se ainda não existir uma palavra igual. Se existir uma palavra
-                                               // igual, temos que pegar o número da página e adicionar na LinkedListOfInteger
-                                               // dessa palavra.
-
+        catch (IOException e) {
+            System.err.format("Erro de E/S: %s%n", e);
         }
-        }
-
     }
 }
